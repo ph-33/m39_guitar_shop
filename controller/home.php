@@ -8,9 +8,13 @@
 
 namespace Controller;
 
+use Model\ProductDB;
+
 class Home
 {
     public function index(){
+        $category_id = filter_input(INPUT_GET, 'category_id');
+        $products = ProductDB::get_products_by_category($category_id);
         include 'view/home.php';
     }
 }

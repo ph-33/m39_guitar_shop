@@ -7,22 +7,26 @@
         you the best selection possible!
     </p>
     <table>
+        <?php foreach ($products as $product): ?>
         <tr>
             <td class="product_image_column" >
-                <img src="images/"
+                <img src="public/images/<?php echo $product['productCode']; ?>.png"
                      alt="&nbsp;">
             </td>
             <td>
                 <p>
-                    <a href="/">productName</a>
+                    <a href="/?product_id=<?php echo $product['productID']; ?>">
+                        <?php echo $product['productName']; ?>
+                    </a>
                 </p>
                 <p>
                     <b>Your price:</b>
-                    $unit_price
+                    <?php echo number_format($product['listPrice']); ?>
                 </p>
-                <p>first_paragraph</p>
+                <p><?php echo $product['description']; ?></p>
             </td>
         </tr>
+        <?php endforeach; ?>
     </table>
 </main>
 <?php include 'view/layouts/footer.php'; ?>
