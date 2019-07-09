@@ -30,10 +30,16 @@ class ProductDB
     {
         $db = \Database::getDB();
         $query = <<<SQL
-        SELECT *
-        FROM products
-        GROUP BY categoryID
-        ORDER BY dateAdded
+        SELECT * FROM
+            (
+                SELECT * FROM products
+                ORDER BY dateAdded DESC
+                LIMIT 18446744073709551615
+            ) AS sub
+        GROUP BY
+            categoryID
+        ORDER BY NULL
+        LIMIT 5
 SQL;
         try {
             $statement = $db->prepare($query);
