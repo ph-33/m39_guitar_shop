@@ -15,9 +15,13 @@
     <h2>Categories</h2>
     <ul>
         <!-- display links for all categories -->
+        <?php foreach ($categories as $category): ?>
         <li>
-            <a href="/">Category</a>
+            <a href="/?category_id=<?php echo $category['categoryID'] ?>">
+                <?php echo htmlentities($category['categoryName'])?>
+            </a>
         </li>
+        <?php endforeach; ?>
     </ul>
 
     <h2>Temp Link</h2>

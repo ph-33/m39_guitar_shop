@@ -1,15 +1,22 @@
 <?php
-// Set up the database connection
-$dsn = 'mysql:host=localhost;dbname=my_guitar_shop2';
-$username = 'root';
-$password = '12345678';
-$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+class Database {
+    private static $dsn = 'mysql:host=localhost;dbname=m39_guitar_shop';
+    private static $username = 'root';
+    private static $password = '12345678';
+    private static $db;
 
-try {
-    $db = new PDO($dsn, $username, $password, $options);
-} catch (PDOException $e) {
-    $error_message = $e->getMessage();
-    include('errors/db_error_connect.php');
-    exit();
+    public static function getDB () {
+        if (!isset(self::$db)) {
+            try {
+                self::$db = new PDO(self::$dsn,
+                                     self::$username,
+                                     self::$password);
+            } catch (PDOException $e) {
+                $error_message = $e->getMessage();
+                include('view/errors/database.php');
+                exit();
+            }
+        }
+        return self::$db;
+    }
 }
-?>
