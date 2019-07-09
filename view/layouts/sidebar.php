@@ -15,6 +15,7 @@
     <h2>Categories</h2>
     <ul>
         <!-- display links for all categories -->
+        <?php $categories = (array) get_categories(); ?>
         <?php foreach ($categories as $category): ?>
         <li>
             <a href="/?category_id=<?php echo $category['categoryID'] ?>">
