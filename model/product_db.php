@@ -52,4 +52,23 @@ SQL;
             display_db_error($error_message);
         }
     }
+
+    public function get_product($product_id){
+        $db = \Database::getDB();
+        $query = <<<SQL
+        SELECT * FROM products
+        WHERE productID = :product_id
+SQL;
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':product_id', $product_id);
+            $statement->execute();
+            $result = $statement->fetch(\PDO::FETCH_ASSOC);
+            $statement->closeCursor();
+            return $result;
+        } catch (\PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
 }

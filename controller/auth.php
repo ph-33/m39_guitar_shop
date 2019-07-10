@@ -24,8 +24,7 @@ class Auth
     public function show_form_login()
     {
         if ($this->check_login()) {
-            header('Location: index.php');
-            exit;
+            redirect('index.php');
         }
         include 'view/login.php';
     }
@@ -33,8 +32,7 @@ class Auth
     public function login()
     {
         if ($this->check_login()) {
-            header('Location: index.php');
-            exit;
+            redirect('index.php');
         }
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
@@ -56,8 +54,7 @@ class Auth
             } else {
                 $customer = CustomerDB::get_customer_by_email($email);
                 $_SESSION['customer'] = $customer;
-                header('Location: index.php');
-                exit;
+                redirect('index.php');
             }
         }
 
@@ -67,7 +64,6 @@ class Auth
     public function logout()
     {
         unset($_SESSION['customer']);
-        header('Location: index.php?action=login');
-        exit;
+        redirect('index.php?action=login');
     }
 }
