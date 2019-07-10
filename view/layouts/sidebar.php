@@ -5,8 +5,12 @@
             <a href=""/">View Cart</a>
         </li>
             <li><a href="/">My Account</a></li>
-            <li><a href="/">Logout</a>
-            <li><a href="/">Login/Register</a></li>
+            <?php if(isset($_SESSION['customer'])): ?>
+                <li><a href="/?action=logout">Logout</a>
+            <?php else: ?>
+                <li><a href="/?action=login">Login</a></li>
+                <li><a href="/?action=register">Register</a></li>
+            <?php endif; ?>
         <li>
             <a href="/">Home</a>
         </li>
