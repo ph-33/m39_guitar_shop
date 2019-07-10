@@ -29,4 +29,8 @@ switch ($action) {
         $controller = new Controller\Auth();
         $controller->logout();
         break;
+    case 'cart':
+        $controller = new Controller\Auth();
+        $controller->logout();
+        break;
 }

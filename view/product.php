@@ -39,7 +39,7 @@
         <?php echo '$' . $discount_amount_f; ?>)</p>
     <form action="/?action=cart" method="get"
           id="add_to_cart_form">
-        <input type="hidden" name="action" value="add" />
+        <input type="hidden" name="method" value="add" />
         <input type="hidden" name="product_id"
                value="<?php echo $product_id; ?>" />
         <b>Quantity:</b>&nbsp;
