@@ -1,6 +1,5 @@
 <?php
     // Parse data
-    $category_id = $product['categoryID'];
     $product_code = $product['productCode'];
     $product_name = $product['productName'];
     $description = $product['description'];

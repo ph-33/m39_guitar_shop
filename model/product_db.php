@@ -53,7 +53,7 @@ SQL;
         }
     }
 
-    public function get_product($product_id){
+    public static function get_product($product_id){
         $db = \Database::getDB();
         $query = <<<SQL
         SELECT * FROM products
