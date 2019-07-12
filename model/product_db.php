@@ -57,6 +57,8 @@ SQL;
         $db = \Database::getDB();
         $query = <<<SQL
         SELECT * FROM products
+        INNER JOIN categories
+        ON products.categoryID = categories.categoryID
         WHERE productID = :product_id
 SQL;
         try {

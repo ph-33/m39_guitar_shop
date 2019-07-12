@@ -2,7 +2,7 @@
     <h2>Links</h2>
     <ul>
         <li>
-            <a href=""/">View Cart</a>
+            <a href="/?action=cart">View Cart</a>
         </li>
             <li><a href="/">My Account</a></li>
             <?php if(isset($_SESSION['customer'])): ?>

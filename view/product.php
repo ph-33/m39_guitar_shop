@@ -37,7 +37,7 @@
         <?php echo '$' . $unit_price_f; ?>
         (You save
         <?php echo '$' . $discount_amount_f; ?>)</p>
-    <form action="/?action=cart" method="get"
+    <form action="/?action=cart" method="post"
           id="add_to_cart_form">
         <input type="hidden" name="method" value="add" />
         <input type="hidden" name="product_id"
