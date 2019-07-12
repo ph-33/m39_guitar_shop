@@ -61,7 +61,7 @@ switch ($action) {
                 throw new Exception('Bad Cart method!');
                 break;
         }
-        include 'view/cart.php';
+        redirect('index.php?action=cart');
         break;
     default:
         throw new Exception('Bad action!');
