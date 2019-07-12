@@ -2,8 +2,11 @@
     <h2>Links</h2>
     <ul>
         <li>
-            <a href="/">Logout</a>
-            <a href="/">Login</a>
+            <?php if(isset($_SESSION['admin'])): ?>
+                <a href="/admin?action=logout">Logout</a>
+            <?php else: ?>
+                <a href="/admin?action=login">Login</a>
+            <?php endif; ?>
         </li>
         <li>
             <a href="/">Home</a>
@@ -13,11 +16,11 @@
         </li>
     </ul>
 
-    <!-- display links for all categories -->
-    <h2>Categories</h2>
+    <h2>Modules</h2>
     <ul>
-        <li>
-            <a href="/">Category</a>
-        </li>
+        <li><a href="/admin?action=category">Category</a></li>
+        <li><a href="/admin?action=product">Product</a></li>
+        <li><a href="/admin?action=order">Order</a></li>
+        <li><a href="/admin?action=administrator">Admin account</a></li>
     </ul>
 </aside>

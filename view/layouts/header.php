@@ -4,7 +4,7 @@
 <!-- the head section -->
 <head>
     <title>My Guitar Shop</title>
-    <link rel="stylesheet" type="text/css" href="public/main.css">
+    <link rel="stylesheet" type="text/css" href="/public/main.css">
 </head>
 
 <body>
