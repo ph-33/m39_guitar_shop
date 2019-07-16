@@ -35,6 +35,30 @@ switch ($action) {
         $controller = new Controller\Admin\Auth();
         $controller->logout();
         break;
+    case 'category':
+        $method = filter_input(INPUT_POST, 'method');
+        if ($method === null) {
+            $method = 'index';
+        }
+        $controller = new \Controller\Admin\Category();
+        switch ($method) {
+            case 'index':
+                $controller->index();
+                break;
+            case 'add':
+                $controller->add();
+                break;
+            case 'update':
+                $controller->update();
+                break;
+            case 'delete':
+                $controller->delete();
+                break;
+            default:
+                throw new Exception('Bad category method!');
+                break;
+        }
+        break;
     default:
         throw new Exception('Bad action!');
         break;

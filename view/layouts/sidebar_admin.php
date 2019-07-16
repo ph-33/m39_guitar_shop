@@ -11,16 +11,20 @@
         <li>
             <a href="/">Home</a>
         </li>
-        <li>
-            <a href="/admin">Admin</a>
-        </li>
+        <?php if(isset($_SESSION['admin'])): ?>
+            <li>
+                <a href="/admin">Admin</a>
+            </li>
+        <?php endif; ?>
     </ul>
 
-    <h2>Modules</h2>
-    <ul>
-        <li><a href="/admin?action=category">Category</a></li>
-        <li><a href="/admin?action=product">Product</a></li>
-        <li><a href="/admin?action=order">Order</a></li>
-        <li><a href="/admin?action=administrator">Admin account</a></li>
-    </ul>
+    <?php if(isset($_SESSION['admin'])): ?>
+        <h2>Modules</h2>
+        <ul>
+            <li><a href="/admin?action=category">Category</a></li>
+            <li><a href="/admin?action=product">Product</a></li>
+            <li><a href="/admin?action=order">Order</a></li>
+            <li><a href="/admin?action=administrator">Administrator</a></li>
+        </ul>
+    <?php endif; ?>
 </aside>
