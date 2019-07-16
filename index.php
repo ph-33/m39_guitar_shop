@@ -5,6 +5,7 @@ require 'util/cart.php';
 
 require 'controller/home.php';
 require 'controller/auth.php';
+require 'controller/cart.php';
 
 require 'model/database.php';
 require 'model/customer_db.php';
@@ -35,33 +36,29 @@ switch ($action) {
     case 'cart':
         $method = filter_input(INPUT_POST, 'method');
         if ($method === null) {
-            include 'view/cart.php';
-            exit;
+            $method = 'index';
         }
-        $product_id = filter_input(INPUT_POST, 'product_id');
-        $quantity = filter_input(INPUT_POST, 'quantity');
+        $controller = new Controller\Cart();
         switch ($method) {
+            case 'index':
+                $controller->index();
+                break;
             case 'add':
-                Cart::add($product_id, $quantity);
+                $controller->add();
                 break;
             case 'update':
-                //$items = filter_input(INPUT_POST, 'items');
-                $items = $_POST['items'];
-                foreach ($items as $product_id => $quantity) {
-                    Cart::update($product_id, $quantity);
-                }
+                $controller->update();
                 break;
             case 'remove':
-                Cart::remove($product_id);
+                $controller->remove();
                 break;
             case 'destroy':
-                Cart::destroy();
+                $controller->destroy();
                 break;
             default:
                 throw new Exception('Bad Cart method!');
                 break;
         }
-        redirect('index.php?action=cart');
         break;
     default:
         throw new Exception('Bad action!');
