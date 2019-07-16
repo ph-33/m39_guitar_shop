@@ -40,23 +40,12 @@ switch ($action) {
         if ($method === null) {
             $method = 'index';
         }
-        $controller = new \Controller\Admin\Category();
-        switch ($method) {
-            case 'index':
-                $controller->index();
-                break;
-            case 'add':
-                $controller->add();
-                break;
-            case 'update':
-                $controller->update();
-                break;
-            case 'delete':
-                $controller->delete();
-                break;
-            default:
-                throw new Exception('Bad category method!');
-                break;
+        $is_valid_method = method_exists('\Controller\Admin\Category', $method);
+        if ($is_valid_method) {
+            $controller = new \Controller\Admin\Category();
+            call_user_func(array($controller, $method));
+        } else {
+            throw new Exception('Bad category method!');
         }
         break;
     default:
